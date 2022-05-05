@@ -66,6 +66,8 @@ header.masthead .intro-text .intro-heading { font-size: 50px; font-weight: 700; 
 
 .service-heading { margin: 15px 0; text-transform: none; }
 
+.pmodules { display: flex; justify-content: center; }
+
 #portfolio .portfolio-item { right: 0; margin: 0 0 15px; }
 
 #portfolio .portfolio-item .portfolio-link { position: relative; display: block; max-width: 400px; margin: 0 auto; cursor: pointer; }

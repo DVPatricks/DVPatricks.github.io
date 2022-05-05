@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Site description">
   <meta name="author" content="Your Name">
-  <link rel="canonical" href="/">
+  <link rel="canonical" href="http://localhost:4000/">
 
   <title>Game World</title>
 
@@ -60,60 +60,62 @@
     </div>
   </header>
   <!-- End Header -->
-
 <!-- Services -->
   <section class="page-section" id="services">
     <div class="container">
 	
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Analysis</h2>
+          <h2 class="section-heading text-uppercase">Initial Demo</h2>
           
-		  <h3 class="section-subheading text-muted">Initial Demo</h3>
+		  <h3 class="section-subheading text-muted"></h3>
 		  
         </div>
       </div>
 	  
       <div class="row text-center">
 	  
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="service-heading"><p>E-Commerce</p>
-</h4>
-          <div class="text-muted"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-</div>
-        </div>
-	  
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="service-heading"><p>Responsive Design</p>
-</h4>
-          <div class="text-muted"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-</div>
-        </div>
-	  
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fab fa-markdown fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="service-heading"><p><a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a></p>
-</h4>
-          <div class="text-muted"><p>Your description here, full <strong>Markdown</strong> support</p>
-</div>
-        </div>
-	  
       </div>
 	  
     </div>
-  </section>
-<!-- End Services -->
+    
+  
+
+
+
+<div class="row">
+    <div class="col-lg-12 text-center">
+      <h2 class="section-heading text-uppercase">Who are the top game companies?</h2>
+    </div>
+    <div class="col-lg-10 mx-auto"><div id="Pmodules1" class="pmodules"></div></div>
+    
+    <div class="col-lg-12 text-center">
+    <h2 class="section-heading text-uppercase">Which platform will you choose?</h2>
+      </div>
+      <div class="col-lg-8 mx-auto"><div id="Pmodules2" class="pmodules"></div></div>
+      
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">Maybe some recommendation?</h2>
+      </div>
+      <div class="col-lg-5 mx-auto"><div id="Pmodules3" class="pmodules"></div></div>
+      <!-- <div w3-include-html="./assets/modules/scatter/index.html"></div> -->
+</div>
+
+
+<script type="module">
+    import {Runtime, Library, Inspector} from "./assets/modules/bubble-chart/runtime.js";
+    import define from "./assets/modules/CircleChart/index.js";
+    import race from "./assets/modules/bar-chart-race/index.js";
+    import bubble from "./assets/modules/bubble-chart/index.js";
+    // import scatter from "./assets/modules/scatter/scatterplot.js";
+    
+    const runtime = new Runtime();
+    const CircleChart = runtime.module(define, Inspector.into(document.body));
+    const bubble_chart = runtime.module(bubble, Inspector.into(document.body));
+    const bar_chart_race = runtime.module(race, Inspector.into(document.body));
+    // const Scatter = runtime.module(scatter, Inspector.into(document.body));
+</script>
+
 
 
 	  <!-- Footer -->

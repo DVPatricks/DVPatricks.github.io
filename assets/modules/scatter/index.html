@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Page Template</title>
+        <script type="text/javascript" src="d3.js"></script>
+        <script type="text/javascript" src="scatterplot.js"></script>
+
+    </head>
+    <body>
+        <div style="width: 800px; ">
+            <span style="margin-left: 5%;"><select id="platform"></select></span>
+            <span style="margin-left: 20%;"><select id="ratings"></select></span>
+            <span style="margin-left: 20%;"><select id="genre"></select></span>
+        </div>
+        
+        <div id="canvas"></div>
+        <script type="text/javascript">
+            var keyframes  // http://localhost:8000/games.csv
+            d3.csv('./assets/modules/scatter/games.csv').then(function(data) {
+                // expand as platform
+
+                data = Array.from(data, d =>{
+                    d.platform = d.platform.replace("[","").replace("]","").replace("'","").replace("'","").split(",")[0]
+                    d.genre = d.genre.replace("[","").replace("]","").replace("'","").replace("'","").split(",")[0]
+                    d.meta_score = parseFloat(d.meta_score)
+                    d.user_score = parseFloat(d.user_score)
+                    return d
+                })
+
+                platforms = new Set(data.map(d => d.platform))
+                var choi_plat = d3.select("#platform")
+                choi_plat.on("change", recompute)
+
+                for (let i of platforms){
+                    choi_plat.append("option")
+                        .attr("value", i)
+                        .text(i)
+                }
+
+                ratings = new Set(data.map(d=>d.rating))
+                var choi_rat = d3.select("#ratings")
+                choi_rat.on("change", recompute)
+
+                for (let i of ratings){
+                    choi_rat.append("option")
+                        .attr("value", i)
+                        .text(i)
+                }
+
+                genres = new Set(data.map(d=>d.genre))
+                var choi_genre = d3.select("#genre")
+                choi_genre.on("change", recompute)
+                for (let i of genres){
+                    choi_genre.append("option")
+                        .attr("value", i)
+                        .text(i)
+                }
+                recompute()
+
+                function recompute(){
+                    // filter according to conditions
+                    let data_
+                    data_  = data.filter(item => item.genre == choi_genre.property("value"))
+                    data_  = data_.filter(item => item.rating == choi_rat.property("value"))
+                    data_  = data_.filter(item => item.platform == choi_plat.property("value"))
+                    chart = Scatterplot(data_, {
+                        x: d => d.user_score,
+                        y: d => d.meta_score,
+                        title: d => d.name,
+                        xLabel: "User score →",
+                        yLabel: "↑ Meta score",
+                        stroke: "steelblue",
+                        width: 800,
+                        height: 600
+                        })
+
+                    d3.select("#canvas").html(chart.outerHTML)
+                    circles = d3.selectAll("circle")
+                    circles.on("mouseover", function(d,i){
+                        let circle = d3.select(this)
+                            .attr("fill","yellow")
+                            .attr("r",8);
+                        let id = circle.property("id")
+                        let text = d3.select("#"+id)
+                        text.style("text-shadow: 1px 1px 1px #000, -1px -1px 1px #fff;")
+                        console.log(text)
+
+                    })
+                    .on("mouseout",function(d,i){
+                        d3.select(this)
+                            .transition()
+                            .duration(500)
+                            .attr("fill","none")
+                            .attr("r",5);
+                    });
+                }
+
+
+
+
+            });
+        /*
+        date: "Nov 23, 1998"
+        description: "As a young boy, Link is tricked by Ganondorf, the King of the Gerudo Thieves. The evil human uses Link to gain access to the Sacred Realm, where he places his tainted hands on Triforce and transforms the beautiful Hyrulean landscape into a barren wasteland. Link is determined to fix the problems he helped to create, so with the help of Rauru he travels through time gathering the powers of the Seven Sages."
+        developer: "Nintendo"
+        genre: "['Action Adventure', 'Fantasy']"
+        meta_score: "99.0"
+        name: "The Legend of Zelda: Ocarina of Time"
+        platform: "['nintendo-64']"
+        rating: "E"
+        type: "singleplayer"
+        url: "https://www.metacritic.com/game/nintendo-64/the-legend-of-zelda-ocarina-of-time"
+        user_score: "91.0"
+        year: "1998"
+        */
+                       // names = new Set(data.map(d => d.platform))
+                // datevalues = Array.from(d3.rollup(data, d => d.length, d => +d.year, d => d.platform))
+                //     .map( row => {
+                //         row[1] = Array.from(row[1].entries())
+                //             .map(d => Object = {name:d[0], value:d[1]})
+                //             .sort((a, b) => d3.descending(a.value, b.value))
+                //             .map((d, i) => {d.rank = i+1
+                //                 return d})
+                //         return row
+                //     })
+                //     .sort(([a], [b]) => d3.ascending(a, b))
+        </script>
+    </body>
+</html>
