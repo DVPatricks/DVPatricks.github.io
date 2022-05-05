@@ -50,7 +50,7 @@ function Scatterplot(data, {
   const xAxis = d3.axisBottom(xScale).ticks(width / 80, xFormat);
   const yAxis = d3.axisLeft(yScale).ticks(height / 50, yFormat);
 
-  const svg = d3.select("#Pmodules4").append("svg")
+  const svg = d3.create("svg")
       .attr("width", width)
       .attr("height", height)
       .attr("viewBox", [0, 0, width, height])

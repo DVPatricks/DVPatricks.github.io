@@ -17,7 +17,7 @@
         <div id="canvas"></div>
         <script type="text/javascript">
             var keyframes  // http://localhost:8000/games.csv
-            d3.csv('./assets/modules/scatter/games.csv').then(function(data) {
+            d3.csv('./games.csv').then(function(data) {
                 // expand as platform
 
                 data = Array.from(data, d =>{

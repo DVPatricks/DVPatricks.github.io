@@ -99,13 +99,14 @@ function BubbleChart(data, {
 	svg.append("image")
 			.attr('width', 500)
 			.attr("xlink:href", "assets/modules/bubble-chart/files/top_games.png")
+      .style('visibility', 'hidden')
       .on("mouseover", function(d,i){
         let img = d3.select("image")
         img.style('visibility', 'visible')
       })
       .on('mouseout', function (d, i) {
         let img = d3.select("image")
-        img.style('visibility', 'visible')
+        img.style('visibility', 'hidden')
       })
     leaf.append("circle")
       .attr("stroke", stroke)
