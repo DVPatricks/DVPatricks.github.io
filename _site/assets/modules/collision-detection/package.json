@@ -1,0 +1,14 @@
+{
+  "name": "@d3/collision-detection/2",
+  "main": "c06d8f62cd01c574@95.js",
+  "version": "95.0.0",
+  "homepage": "https://observablehq.com/@d3/collision-detection/2",
+  "author": {
+    "name": "D3",
+    "url": "https://observablehq.com/@d3"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}
