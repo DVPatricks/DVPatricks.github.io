@@ -3,9 +3,9 @@
 
 function _chart(DOM,width,height,data,d3,filter)
 { 
-  var full_width = window.screen.availWidth
-  width = 1200
-  height = 600 
+  var full_width = window.screen.availWidth - 400
+  width = full_width
+  height = 535 
   // const context = DOM.context2d(width, height);
   var nodes;
   var data_;
@@ -46,10 +46,10 @@ function _chart(DOM,width,height,data,d3,filter)
     gra.addColorStop(0.6,'#eeaa44')
     gra.addColorStop(1,'#feca2f')
     
-    cxt.shadowOffsetX = 10;
-    cxt.shadowOffsetY = 10;
+    cxt.shadowOffsetX = 5;
+    cxt.shadowOffsetY = 5;
     cxt.shadowColor = 'rgba(0,0,0,0.5)';
-    cxt.shadowBlur = 10;
+    cxt.shadowBlur = 5;
 
     cxt.fillStyle = gra
     cxt.strokeStyle = 'white'
