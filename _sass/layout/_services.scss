@@ -7,4 +7,133 @@
 .pmodules {
   display: flex;
   justify-content: center;
+  height: 900px;
+  -moz-box-flex: 1; /*中间div宽度自适应屏幕 兼容Firefox*/
+  -webkit-box-flex: 1;/*中间div宽度自适应屏幕 兼容Chrome、Safari*/
 }
+
+#containerM1 {  /*把盒布局变成弹性盒布局*/
+  display: -moz-box; /* 兼容Firefox */
+  display: -webkit-box; /* 兼容Chrome、Safari */
+  padding: 10px;
+  height: 900px;
+
+  
+
+  h2{
+    text-align: center;
+    font-family: "Comic sans MS";
+  }
+
+  p.inset{
+    border-radius: 10px;
+    border-style: inset; 
+    background-color: white;
+    display: inline;
+    font-size:20px;
+  }
+  p.paraph{
+    border-radius: 10px;
+    display: inline;
+    font-size:15px;
+  }
+  p.left{
+    display: inline;
+    font-size:20px;
+    border-left: 6px solid red;
+  }
+  p.normal1{
+    margin: 1%;
+    border-radius: 10px;
+    border-style: inset;
+    font-size:15px;
+    background-color: white;
+  }
+  p.game_genre{
+    display: inline;
+    font-size:20px;
+    font-family: Arial;
+    font-weight: 100;
+  }
+  p{
+    padding-left: 1ch;
+    padding-right: 1ch;
+    font-family: "Comic sans MS";
+  }
+}
+
+#leftM1 {
+  border-style: inset;
+  width: 350px;/*左边div宽度固定*/
+  padding: 0px;
+  background-color: rgba(129, 129, 129, 0.249);
+  text-align: justify;
+
+  div.scroller0 {
+    border-style: inset;
+    width: 100%;
+    height: 250px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+  }
+  
+}
+#centerM1 {
+  border-style: inset;
+  -moz-box-flex: 1; /*中间div宽度自适应屏幕 兼容Firefox*/
+  -webkit-box-flex: 1;/*中间div宽度自适应屏幕 兼容Chrome、Safari*/
+  padding: 0px;
+  background-color: rgba(255, 255, 255, 0.435);
+}
+#rightM1 {
+  text-align: justify;
+  border-style: inset;
+  width: 500px; /*右边div宽度固定*/
+  padding: 8px;
+  background-color: rgba(50, 205, 50, 0.105); 
+
+  div.scroller0 {
+    border-style: inset;
+    width: 100%;
+    height: 200px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+  }
+
+  div.scroller1 {
+    width: 100%;
+    height: 50px;
+    overflow-y: scroll;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+  }
+  div.scroller1::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+  
+}
+
+  table{
+    margin: 8px;
+
+    img{
+      border-width: 5pt;
+      width: 110px;
+      height: 160px;
+      border-style: outset;
+      border-radius: 10px;
+    }
+    p{
+      font-size:15px;
+      text-align: center;
+    }
+  }
+}
+#left,#center,#right {
+  
+  box-sizing:border-box; /* 兼容IE、Opera 以及 Chrome */
+  -moz-box-sizing: border-box; /* 兼容Firefox */
+  -webkit-box-sizing: border-box;/* 兼容Safari */
+}
+
