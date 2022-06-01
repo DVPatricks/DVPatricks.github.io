@@ -3,7 +3,7 @@
 
 function _chart(DOM,width,height,data,d3,filter)
 { 
-  var full_width = window.screen.availWidth - 400
+  var full_width = window.screen.availWidth - 400 -50
   width = full_width
   height = 535 
   // const context = DOM.context2d(width, height);
