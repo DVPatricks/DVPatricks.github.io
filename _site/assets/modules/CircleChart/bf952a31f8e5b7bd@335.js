@@ -83,10 +83,12 @@ function _chart(invalidation, keyword_cloud_width, keyword_cloud_height,keyword_
   const svg = d3.select("#Pmodules3").append("svg")
       .attr("width", 1000)
       .attr("height", 1000)
-      .attr("viewBox", [-500, -425, 1000, 1000])
+      .attr("viewBox", [-500, -450, 1000, 1000])
       .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
 	for(var i = 1; i < 9; i++){
-		d3.select("#right_3_img_"+i).attr("src", "./assets/modules/CircleChart/files/default_game.jpg").on("mouseover", show_weight)
+		d3.select("#right_3_img_"+i).attr("src", "./assets/modules/CircleChart/files/default_game.jpg")
+		.on("mouseover", show_weight)
+		.on("click", show_info)
 		/*d3.select("#right_3_img_"+i).append("svg")
 		 .attr("height", 300)
 		 .attr('width', 300)
@@ -98,12 +100,36 @@ function _chart(invalidation, keyword_cloud_width, keyword_cloud_height,keyword_
 		 .attr('width', 300);*/
 	}
 	var weight_map = new Map();
+	var img_info_map = new Map();
 	function show_weight(event, d){
 		//console.log("show_weight")
 		//console.log(d3.select(this)._groups[0][0].id)
 		//d3.select("#weight_3").text(Math.ceil(weight_sum/(cnt-1)) + "%");
 		d3.select("#weight_3").text(weight_map.get(d3.select(this)._groups[0][0].id) + "%");
 	}
+	function show_info(event, d){
+		var img_info = img_info_map.get(d3.select(this)._groups[0][0].id);
+		generateCard(img_info)
+	}
+  function generateCard(item){
+    console.log(item)
+    d3.select("#game-name_3").text(item.name)
+    d3.select("#img-src_3")
+      .attr("src", item.picture)
+    d3.select("#modal_description_3")
+      .text(item.description)
+    d3.select("#ref_3")
+      .attr("href", item.url)
+    d3.select("#modal_user_score_3")
+      .text("User score: " + item.user_score)
+    d3.select("#modal_meta_score_3")
+      .text("Meta score: " + item.meta_score)
+    d3.select("#modal_platform_3")
+      .text("Platform:   " + item.platform)
+    d3.select("#modal_developer_3")
+      .text("Developer:  " + item.developer)
+    $('#myModal_3').modal('show')
+  }
 	 //icon
 	 d3.select("#icon_3").attr("src", "./assets/modules/CircleChart/files/default_game.jpg");
 	 /*
@@ -119,7 +145,7 @@ function _chart(invalidation, keyword_cloud_width, keyword_cloud_height,keyword_
 	 
   const node = svg.append("g")
       .attr("font-family", "sans-serif")
-      .attr("font-size", 10)
+      .attr("font-size", 13)
     .selectAll("g")
     .data(root.leaves())
     .join("g")
@@ -196,7 +222,7 @@ ${d.incoming.length} incoming`));
 		weight = Math.ceil(Math.random()*40 + 60);
 		weight_sum = weight_sum + weight;
 		weight_map.set("right_3_img_"+cnt, weight);
-		
+		img_info_map.set("right_3_img_"+cnt, info.get(node[0].data.id));
 		//console.log("incomming data")
 		//console.log(node[0].data)
 		platformSet.add(info.get(node[0].data.id).platform);
@@ -213,6 +239,7 @@ ${d.incoming.length} incoming`));
 		weight = Math.ceil(Math.random()*40 + 60);
 		weight_sum = weight_sum + weight;
 		weight_map.set("right_3_img_"+cnt, weight);
+		img_info_map.set("right_3_img_"+cnt, info.get(node[1].data.id));
 		//d3.select("#right_3_img_" + cnt).select("image").attr("xlink:href",info.get(node[1].data.id).picture);
 		d3.select("#right_3_img_"+cnt).attr("src", info.get(node[1].data.id).picture)
 		platformSet.add(info.get(node[1].data.id).platform);

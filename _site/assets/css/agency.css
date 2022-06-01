@@ -113,7 +113,7 @@ header.masthead .intro-text .intro-heading { font-size: 50px; font-weight: 700; 
 
 #container_3 h2 { text-align: center; font-family: "Comic sans MS"; }
 
-#container_3 p.inset { border-radius: 10px; border-style: inset; display: inline; font-size: 20px; }
+#container_3 p.inset { padding-right: 1ch; border-radius: 10px; border-style: inset; background-color: white; display: inline; font-size: 20px; }
 
 #container_3 p.left { display: inline; font-size: 20px; border-left: 6px solid red; }
 
@@ -132,6 +132,8 @@ header.masthead .intro-text .intro-heading { font-size: 50px; font-weight: 700; 
 #right_3 div.scroller1::-webkit-scrollbar { display: none; /* Safari and Chrome */ }
 
 #right_3 table { margin: 8px; }
+
+#right_3 table #icon_3 { border-width: 5pt; width: 120px; height: 150px; border-style: outset; border-radius: 5px; }
 
 #right_3 table img { border-width: 5pt; width: 80px; height: 110px; border-style: outset; border-radius: 5px; }
 
