@@ -68,7 +68,7 @@ header.masthead .intro-text .intro-heading { font-size: 50px; font-weight: 700; 
 
 .service-heading { margin: 15px 0; text-transform: none; }
 
-.pmodules { display: flex; justify-content: center; height: 900px; -moz-box-flex: 1; /*中间div宽度自适应屏幕 兼容Firefox*/ -webkit-box-flex: 1; /*中间div宽度自适应屏幕 兼容Chrome、Safari*/ }
+.pmodules { display: flex; justify-content: center; height: 700px; -moz-box-flex: 1; /*中间div宽度自适应屏幕 兼容Firefox*/ -webkit-box-flex: 1; /*中间div宽度自适应屏幕 兼容Chrome、Safari*/ }
 
 #containerM1 { /*把盒布局变成弹性盒布局*/ display: -moz-box; /* 兼容Firefox */ display: -webkit-box; /* 兼容Chrome、Safari */ padding: 10px; height: 900px; }
 
