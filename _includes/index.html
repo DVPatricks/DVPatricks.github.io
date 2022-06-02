@@ -79,8 +79,9 @@
 <div class="col-lg-12 text-center">
   <h2 class="section-heading text-uppercase">Which platform will you choose?</h2>
     </div>
-    <div class="col-lg-8 mx-auto"><div id="Pmodules2" class="pmodules"></div></div>
-    
+    <div class="col-lg-8 mx-auto"><div id="Pmodules2" class="pmodules"></div>
+    <div class="col-lg-8 mx-auto"><div id="Pmodules21" class="pmodules"></div></div>
+
     <div class="col-lg-12 text-center">
       <h2 class="section-heading text-uppercase">Maybe some recommendation?</h2>
     </div>
@@ -416,6 +417,40 @@
   ]
   };
   vegaEmbed('#Pmodules2', yourVlSpec);
+
+
+
+  var yourSpec={
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800, "height": 400,
+  "data": {"url": "/assets/modules/platform.json"},
+  "mark": "area",
+  "params": [{
+    "name": "industry",
+    "select": {"type": "point", "fields": ["series"]},
+    "bind": "legend"
+  }],
+  "encoding": {
+    "x": {
+      "timeUnit": "yearmonth", "field": "date",
+      "axis": {"domain": false, "format": "%Y", "tickSize": 0}
+    },
+    "y": {
+      "aggregate": "sum", "field": "count",
+      "stack": "center", "axis": null
+    },
+    "color": {
+      "field":"series",
+      "scale": {"scheme": "category20b"}
+    },
+    "opacity": {
+      "condition": {"param": "industry", "value": 1},
+      "value": 0.2
+    }
+  }
+}
+vegaEmbed('#Pmodules21', yourSpec);
+
 </script>
 
 

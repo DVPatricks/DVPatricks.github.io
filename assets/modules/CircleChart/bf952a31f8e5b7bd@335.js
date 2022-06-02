@@ -75,8 +75,13 @@ d3.scaleOrdinal(d3.range(n), ["transparent"].concat(d3.schemeTableau10))
 )}
 
 
-function _chart(invalidation, keyword_cloud_width, keyword_cloud_height,keyword_cloud_data,keyword_cloud_color,tree,bilink,d3,data,width,colornone,line,colorin,colorout, info)
+function _chart(graph, invalidation, keyword_cloud_width, keyword_cloud_height,keyword_cloud_data,keyword_cloud_color,tree,bilink,d3,data,width,colornone,line,colorin,colorout, info)
 {
+  const {nodes, links} = graph;
+  var link_weight_map = new Map();
+  for (const {source: sourceId, target: targetId , weight: myweight} of links) {
+	link_weight_map.set(sourceId + "#" + targetId, myweight);
+  }
   const root = tree(bilink(d3.hierarchy(data)
       .sort((a, b) => d3.ascending(a.height, b.height) || d3.ascending(a.data.id, b.data.id))));
 ``
@@ -99,6 +104,7 @@ function _chart(invalidation, keyword_cloud_width, keyword_cloud_height,keyword_
 		 .attr("height", 300)
 		 .attr('width', 300);*/
 	}
+	
 	var weight_map = new Map();
 	var img_info_map = new Map();
 	function show_weight(event, d){
@@ -212,11 +218,16 @@ ${d.incoming.length} incoming`));
 	let ratingSet = new Set();
 	var cnt = 1;
 	var weight_sum = 0;
-	var weight = 0;
+	var weight_get = 0;
+	//current node is source
+	//outgoing is its targets
+	/*
 	for (const node of d.incoming) {
 		if(cnt > 8){
 			break;
 		}
+		console.log("incoming---node")
+		console.log(node)
 		//d3.select("#right_3_img_" + cnt).select("image").attr("xlink:href",info.get(node[0].data.id).picture);
 		d3.select("#right_3_img_"+cnt).attr("src", info.get(node[0].data.id).picture)
 		weight = Math.ceil(Math.random()*40 + 60);
@@ -231,14 +242,14 @@ ${d.incoming.length} incoming`));
 		typeSet.add(info.get(node[0].data.id).type);
 		ratingSet.add(info.get(node[0].data.id).rating);
 		cnt++;
-	}
+	}*/
 	for (const node of d.outgoing) {
 		if(cnt > 8){
 			break;
 		}
-		weight = Math.ceil(Math.random()*40 + 60);
-		weight_sum = weight_sum + weight;
-		weight_map.set("right_3_img_"+cnt, weight);
+		weight_get = Math.ceil(link_weight_map.get(d.data.id + "#" + node[1].data.id) * 100);
+		weight_sum = weight_sum + weight_get;
+		weight_map.set("right_3_img_"+cnt, weight_get);
 		img_info_map.set("right_3_img_"+cnt, info.get(node[1].data.id));
 		//d3.select("#right_3_img_" + cnt).select("image").attr("xlink:href",info.get(node[1].data.id).picture);
 		d3.select("#right_3_img_"+cnt).attr("src", info.get(node[1].data.id).picture)
@@ -365,7 +376,7 @@ function _data(graph)
     node.targets = [];
   }
 
-  for (const {source: sourceId, target: targetId} of links) {
+  for (const {source: sourceId, target: targetId , weight: myweight} of links) {
     nodeById.get(sourceId).targets.push(targetId);
   }
 
@@ -445,9 +456,9 @@ export default function define(runtime, observer) {
 	["miserables.json", {url: new URL("./files/bundle", import.meta.url), mimeType: "application/json", toString}]
 	//bundle
   ]);
-
+  
   main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
-  main.variable(observer("chart")).define("chart", ["invalidation","keyword_cloud_width","keyword_cloud_height","keyword_cloud_data","keyword_cloud_color","tree","bilink","d3","data","width","colornone","line","colorin","colorout", "info"], _chart);
+  main.variable(observer("chart")).define("chart", ["graph", "invalidation","keyword_cloud_width","keyword_cloud_height","keyword_cloud_data","keyword_cloud_color","tree","bilink","d3","data","width","colornone","line","colorin","colorout", "info"], _chart);
   main.variable(observer("graph")).define("graph", ["FileAttachment"], _graph);
   main.variable(observer("data")).define("data", ["graph"], _data);
   main.variable(observer("info")).define("info", ["d3"], _info);
