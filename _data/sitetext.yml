@@ -11,7 +11,7 @@
 # -----------------
 en: &DEFAULT_EN
   header:
-    # title: Welcome to our Studio!
+    title: 
     text: Ready Player One
     button: Let's play
     buttonlink: "#services"

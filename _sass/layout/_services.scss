@@ -36,7 +36,9 @@ div.padding{
   display: -webkit-box; /* 兼容Chrome、Safari */
   padding: 10px;
   height: 900px;
-
+body.bgBody{
+  background-image: "../img/epfl.jpg"
+}
   
 
   h2{

@@ -56,7 +56,7 @@ img::-moz-selection { background: transparent; }
 
 #col-md-3 col-sm-6 { flex: 0 0 auto; }
 
-header.masthead { text-align: center; color: yellow; background-image: url("../img/header.png"); background-repeat: no-repeat; background-attachment: scroll; background-position: center center; background-size: cover; }
+header.masthead { text-align: center; color: yellow; background-image: url("../img/epfl.jpg"); background-repeat: no-repeat; background-attachment: scroll; background-position: center center; background-size: cover; }
 
 header.masthead .intro-text { padding-top: 150px; padding-bottom: 100px; }
 
@@ -79,6 +79,8 @@ div.center { text-align: center; width: 30%; display: block; margin-left: auto; 
 div.padding { padding-top: 200px; padding-bottom: 40px; }
 
 #containerM1 { /*把盒布局变成弹性盒布局*/ display: -moz-box; /* 兼容Firefox */ display: -webkit-box; /* 兼容Chrome、Safari */ padding: 10px; height: 900px; }
+
+#containerM1 body.bgBody { background-image: "../img/epfl.jpg"; }
 
 #containerM1 h2 { text-align: center; font-family: "Comic sans MS"; }
 
