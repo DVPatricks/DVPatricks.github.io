@@ -70,6 +70,14 @@ header.masthead .intro-text .intro-heading { font-size: 50px; font-weight: 700; 
 
 .pmodules { display: flex; justify-content: center; height: 900px; -moz-box-flex: 1; /*中间div宽度自适应屏幕 兼容Firefox*/ -webkit-box-flex: 1; /*中间div宽度自适应屏幕 兼容Chrome、Safari*/ }
 
+.pmodules2 { display: flex; justify-content: center; height: 400px; -moz-box-flex: 1; /*中间div宽度自适应屏幕 兼容Firefox*/ -webkit-box-flex: 1; /*中间div宽度自适应屏幕 兼容Chrome、Safari*/ }
+
+div.center { text-align: center; width: 30%; display: block; margin-left: auto; margin-right: auto; }
+
+#pcm-c { overflow: visible !important; }
+
+div.padding { padding-top: 200px; padding-bottom: 40px; }
+
 #containerM1 { /*把盒布局变成弹性盒布局*/ display: -moz-box; /* 兼容Firefox */ display: -webkit-box; /* 兼容Chrome、Safari */ padding: 10px; height: 900px; }
 
 #containerM1 h2 { text-align: center; font-family: "Comic sans MS"; }
@@ -85,6 +93,8 @@ header.masthead .intro-text .intro-heading { font-size: 50px; font-weight: 700; 
 #containerM1 p.game_genre { display: inline; font-size: 20px; font-family: Arial; font-weight: 100; }
 
 #containerM1 p { padding-left: 1ch; padding-right: 1ch; font-family: "Comic sans MS"; }
+
+p.text_mine { text-align: left; font-size: 25px; padding-bottom: 40px; }
 
 #leftM1 { border-style: inset; width: 350px; /*左边div宽度固定*/ padding: 0px; background-color: rgba(129, 129, 129, 0.249); text-align: justify; }
 
